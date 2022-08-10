@@ -7,9 +7,4 @@ func TestHello(t *testing.T) {
 	if greeting != "Hello, Doga!" {
 		t.Fatalf("%v", error)
 	}
-
-	_, error = hello("")
-	if error == nil {
-		t.Fatalf("return an error when name is an empty string")
-	}
 }
