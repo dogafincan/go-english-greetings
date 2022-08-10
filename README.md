@@ -1,2 +1,2 @@
 # go-hello
-Hello world in Go.
+A simple greeting function in Go.
