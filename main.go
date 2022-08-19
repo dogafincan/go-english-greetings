@@ -1,15 +1,25 @@
 package main
 
-import "fmt"
+import (
+	"errors"
+	"fmt"
+	"log"
+)
 
 func hello(name string) (string, error) {
 	if name == "" {
-		return "", fmt.Errorf("name cannot be an empty string")
+		return "", errors.New("name cannot be an empty string")
 	}
 
-	return "Hello, " + name + "!", nil
+	return fmt.Sprintf("Hello, %v!", name), nil
 }
 
 func main() {
-	fmt.Println(hello("Doga"))
+	greeting, err := hello("Doga")
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Println(greeting)
 }
