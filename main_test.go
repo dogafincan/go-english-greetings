@@ -10,7 +10,7 @@ func TestHello(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	if actual != "Hello, Doga!" {
+	if actual != expected {
 		t.Errorf("Expected '%v'. Got '%v'", expected, actual)
 	}
 }
