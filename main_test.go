@@ -3,8 +3,14 @@ package main
 import "testing"
 
 func TestHello(t *testing.T) {
-	greeting, error := hello("Doga")
-	if greeting != "Hello, Doga!" {
-		t.Error(error)
+	expected := "Hello, Doga!"
+	actual, err := hello("Doga")
+
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	if actual != "Hello, Doga!" {
+		t.Errorf("Expected '%v'. Got '%v'", expected, actual)
 	}
 }
