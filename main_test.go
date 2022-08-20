@@ -6,7 +6,7 @@ func TestHello(t *testing.T) {
 	_, err := hello("")
 
 	if err == nil {
-		t.Fatal("An empty string should result in an error")
+		t.Fatal("An empty name should return an error")
 	}
 
 	expected := "Hello, Doga!"
