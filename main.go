@@ -15,6 +15,9 @@ func hello(name string) (string, error) {
 }
 
 func main() {
+	log.SetPrefix("hello: ")
+	log.SetFlags(0)
+
 	greeting, err := hello("Doga")
 
 	if err != nil {
