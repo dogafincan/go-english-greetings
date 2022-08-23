@@ -12,7 +12,7 @@ func init() {
 
 func TestRandomGreeting(t *testing.T) {
 	expected := "Hail, Doga! Well met!"
-	actual, err := randomGreeting("Doga")
+	actual, err := RandomGreeting("Doga")
 
 	if err != nil {
 		t.Error(err)
@@ -24,7 +24,7 @@ func TestRandomGreeting(t *testing.T) {
 }
 
 func TestRandomGreetingEmpty(t *testing.T) {
-	greeting, err := randomGreeting("")
+	greeting, err := RandomGreeting("")
 
 	if greeting != "" || err == nil {
 		t.Error("an empty name should return an error")
@@ -38,7 +38,7 @@ func TestRandomGreetings(t *testing.T) {
 		"Hail, Somchai! Well met!",
 	}
 
-	actual, err := randomGreetings("Ji-an", "Hiroto", "Somchai")
+	actual, err := RandomGreetings("Ji-an", "Hiroto", "Somchai")
 
 	if err != nil {
 		t.Error(err)
@@ -50,7 +50,7 @@ func TestRandomGreetings(t *testing.T) {
 }
 
 func TestRandomGreetingsEmpty(t *testing.T) {
-	greetings, err := randomGreetings()
+	greetings, err := RandomGreetings()
 
 	if !reflect.DeepEqual(greetings, []string{}) || err == nil {
 		t.Error("an empty name should return an error")

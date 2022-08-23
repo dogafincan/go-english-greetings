@@ -12,7 +12,7 @@ func init() {
 	rand.Seed(time.Now().UnixNano())
 }
 
-func randomGreeting(name string) (string, error) {
+func RandomGreeting(name string) (string, error) {
 	if name == "" {
 		return "", errors.New("name cannot be an empty string")
 	}
@@ -36,7 +36,7 @@ func RandomGreetings(names ...string) ([]string, error) {
 	var greetings []string
 
 	for _, name := range names {
-		greeting, err := randomGreeting(name)
+		greeting, err := RandomGreeting(name)
 
 		if err != nil {
 			log.Fatal(err)
