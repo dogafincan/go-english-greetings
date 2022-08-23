@@ -1,2 +1,2 @@
 # go-hello
-A simple greeting function in Go.
+Print English greetings in Go.
