@@ -22,6 +22,22 @@ func randomGreeting() string {
 	return greetings[rand.Intn(len(greetings))]
 }
 
+func randomGreetings(names ...string) []string {
+	var greetings []string
+
+	for _, name := range names {
+		greeting, err := hello(name)
+
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		greetings = append(greetings, greeting)
+	}
+
+	return greetings
+}
+
 func hello(name string) (string, error) {
 	if name == "" {
 		return "", errors.New("name cannot be an empty string")
@@ -31,9 +47,6 @@ func hello(name string) (string, error) {
 }
 
 func main() {
-	log.SetPrefix("hello: ")
-	log.SetFlags(0)
-
 	greeting, err := hello("Doga")
 
 	if err != nil {
@@ -41,4 +54,10 @@ func main() {
 	}
 
 	fmt.Println(greeting)
+
+	greetings := randomGreetings("Ji-an", "Hiroto", "Somchai")
+
+	for _, greeting := range greetings {
+		fmt.Println(greeting)
+	}
 }

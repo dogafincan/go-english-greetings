@@ -2,6 +2,7 @@ package main
 
 import (
 	"math/rand"
+	"reflect"
 	"testing"
 )
 
@@ -16,14 +17,26 @@ func TestHello(t *testing.T) {
 		t.Fatal("an empty name should return an error")
 	}
 
-	expected := "Hail, Doga! Well met!"
-	actual, err := hello("Doga")
+	expectedGreeting := "Hail, Doga! Well met!"
+	actualGreeting, err := hello("Doga")
 
 	if err != nil {
 		t.Fatal(err)
 	}
 
-	if actual != expected {
-		t.Errorf("expected '%v'; got '%v'", expected, actual)
+	if actualGreeting != expectedGreeting {
+		t.Errorf("expected '%v'; got '%v'", expectedGreeting, actualGreeting)
+	}
+
+	expectedGreetings := []string{
+		"Hi, Ji-an. Welcome!",
+		"Hail, Hiroto! Well met!",
+		"Hail, Somchai! Well met!",
+	}
+
+	actualGreetings := randomGreetings("Ji-an", "Hiroto", "Somchai")
+
+	if !reflect.DeepEqual(actualGreetings, expectedGreetings) {
+		t.Errorf("expected '%v'; got '%v'", expectedGreetings, actualGreetings)
 	}
 }
