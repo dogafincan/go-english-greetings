@@ -1,3 +1,3 @@
-module github.com/dogafincan/go-hello
+module github.com/dogafincan/go-english-greetings
 
 go 1.19

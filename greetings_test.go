@@ -1,4 +1,4 @@
-package main
+package greetings
 
 import (
 	"math/rand"
@@ -10,9 +10,9 @@ func init() {
 	rand.Seed(1)
 }
 
-func TestHello(t *testing.T) {
+func TestRandomGreeting(t *testing.T) {
 	expected := "Hail, Doga! Well met!"
-	actual, err := hello("Doga")
+	actual, err := randomGreeting("Doga")
 
 	if err != nil {
 		t.Error(err)
@@ -23,8 +23,8 @@ func TestHello(t *testing.T) {
 	}
 }
 
-func TestHelloEmpty(t *testing.T) {
-	greeting, err := hello("")
+func TestRandomGreetingEmpty(t *testing.T) {
+	greeting, err := randomGreeting("")
 
 	if greeting != "" || err == nil {
 		t.Error("an empty name should return an error")
