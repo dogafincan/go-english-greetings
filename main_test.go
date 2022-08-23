@@ -15,7 +15,7 @@ func TestHello(t *testing.T) {
 	actual, err := hello("Doga")
 
 	if err != nil {
-		t.Fatal(err)
+		t.Error(err)
 	}
 
 	if actual != expected {
@@ -27,7 +27,7 @@ func TestHelloEmpty(t *testing.T) {
 	greeting, err := hello("")
 
 	if greeting != "" || err == nil {
-		t.Fatal("an empty name should return an error")
+		t.Error("an empty name should return an error")
 	}
 }
 
@@ -38,9 +38,21 @@ func TestRandomGreetings(t *testing.T) {
 		"Hail, Somchai! Well met!",
 	}
 
-	actual := randomGreetings("Ji-an", "Hiroto", "Somchai")
+	actual, err := randomGreetings("Ji-an", "Hiroto", "Somchai")
+
+	if err != nil {
+		t.Error(err)
+	}
 
 	if !reflect.DeepEqual(actual, expected) {
 		t.Errorf("expected '%v'; got '%v'", expected, actual)
+	}
+}
+
+func TestRandomGreetingsEmpty(t *testing.T) {
+	greetings, err := randomGreetings()
+
+	if !reflect.DeepEqual(greetings, []string{}) || err == nil {
+		t.Error("an empty name should return an error")
 	}
 }

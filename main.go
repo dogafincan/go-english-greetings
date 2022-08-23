@@ -22,7 +22,11 @@ func randomGreeting() string {
 	return greetings[rand.Intn(len(greetings))]
 }
 
-func randomGreetings(names ...string) []string {
+func randomGreetings(names ...string) ([]string, error) {
+	if len(names) == 0 {
+		return []string{}, errors.New("no names found")
+	}
+
 	var greetings []string
 
 	for _, name := range names {
@@ -35,7 +39,7 @@ func randomGreetings(names ...string) []string {
 		greetings = append(greetings, greeting)
 	}
 
-	return greetings
+	return greetings, nil
 }
 
 func hello(name string) (string, error) {
@@ -55,7 +59,11 @@ func main() {
 
 	fmt.Println(greeting)
 
-	greetings := randomGreetings("Ji-an", "Hiroto", "Somchai")
+	greetings, err := randomGreetings("Ji-an", "Hiroto", "Somchai")
+
+	if err != nil {
+		log.Fatal(err)
+	}
 
 	for _, greeting := range greetings {
 		fmt.Println(greeting)
