@@ -1,2 +1,2 @@
-# go-hello
-Print English greetings in Go.
+# go-english-greetings
+Go package that returns a random greeting in English.
