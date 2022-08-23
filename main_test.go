@@ -11,32 +11,36 @@ func init() {
 }
 
 func TestHello(t *testing.T) {
-	_, err := hello("")
-
-	if err == nil {
-		t.Fatal("an empty name should return an error")
-	}
-
-	expectedGreeting := "Hail, Doga! Well met!"
-	actualGreeting, err := hello("Doga")
+	expected := "Hail, Doga! Well met!"
+	actual, err := hello("Doga")
 
 	if err != nil {
 		t.Fatal(err)
 	}
 
-	if actualGreeting != expectedGreeting {
-		t.Errorf("expected '%v'; got '%v'", expectedGreeting, actualGreeting)
+	if actual != expected {
+		t.Errorf("expected '%v'; got '%v'", expected, actual)
 	}
+}
 
-	expectedGreetings := []string{
+func TestHelloEmpty(t *testing.T) {
+	greeting, err := hello("")
+
+	if greeting != "" || err == nil {
+		t.Fatal("an empty name should return an error")
+	}
+}
+
+func TestRandomGreetings(t *testing.T) {
+	expected := []string{
 		"Hi, Ji-an. Welcome!",
 		"Hail, Hiroto! Well met!",
 		"Hail, Somchai! Well met!",
 	}
 
-	actualGreetings := randomGreetings("Ji-an", "Hiroto", "Somchai")
+	actual := randomGreetings("Ji-an", "Hiroto", "Somchai")
 
-	if !reflect.DeepEqual(actualGreetings, expectedGreetings) {
-		t.Errorf("expected '%v'; got '%v'", expectedGreetings, actualGreetings)
+	if !reflect.DeepEqual(actual, expected) {
+		t.Errorf("expected '%v'; got '%v'", expected, actual)
 	}
 }
