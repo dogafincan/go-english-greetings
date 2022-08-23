@@ -28,7 +28,7 @@ func randomGreeting(name string) (string, error) {
 	return fmt.Sprintf(randomGreeting, name), nil
 }
 
-func randomGreetings(names ...string) ([]string, error) {
+func RandomGreetings(names ...string) ([]string, error) {
 	if len(names) == 0 {
 		return []string{}, errors.New("no names found")
 	}
