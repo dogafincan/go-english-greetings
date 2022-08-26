@@ -23,7 +23,7 @@ func TestRandomGreeting(t *testing.T) {
 	}
 }
 
-func TestRandomGreetingEmpty(t *testing.T) {
+func TestRandomGreetingEmptyString(t *testing.T) {
 	greeting, err := RandomGreeting("")
 
 	if greeting != "" || err == nil {
@@ -49,8 +49,16 @@ func TestRandomGreetings(t *testing.T) {
 	}
 }
 
-func TestRandomGreetingsEmpty(t *testing.T) {
+func TestRandomGreetingsEmptyArray(t *testing.T) {
 	greetings, err := RandomGreetings()
+
+	if !reflect.DeepEqual(greetings, []string{}) || err == nil {
+		t.Error("an error should be returned when no names are entered")
+	}
+}
+
+func TestRandomGreetingsEmptyString(t *testing.T) {
+	greetings, err := RandomGreetings("")
 
 	if !reflect.DeepEqual(greetings, []string{}) || err == nil {
 		t.Error("an empty name should return an error")

@@ -3,7 +3,6 @@ package greetings
 import (
 	"errors"
 	"fmt"
-	"log"
 	"math/rand"
 	"time"
 )
@@ -39,7 +38,7 @@ func RandomGreetings(names ...string) ([]string, error) {
 		greeting, err := RandomGreeting(name)
 
 		if err != nil {
-			log.Fatal(err)
+			return []string{}, err
 		}
 
 		greetings = append(greetings, greeting)
