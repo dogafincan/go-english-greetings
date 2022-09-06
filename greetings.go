@@ -13,7 +13,7 @@ func init() {
 
 func RandomGreeting(name string) (string, error) {
 	if name == "" {
-		return "", errors.New("name cannot be an empty string")
+		return "", errors.New("expected a non-empty string")
 	}
 
 	greetings := [3]string{
@@ -29,7 +29,7 @@ func RandomGreeting(name string) (string, error) {
 
 func RandomGreetings(names ...string) ([]string, error) {
 	if len(names) == 0 {
-		return []string{}, errors.New("no names found")
+		return []string{}, errors.New("expected at least one name")
 	}
 
 	var greetings []string
