@@ -1,6 +1,7 @@
 package greetings
 
 import (
+	"errors"
 	"math/rand"
 	"reflect"
 	"testing"
@@ -24,10 +25,10 @@ func TestRandomGreeting(t *testing.T) {
 }
 
 func TestRandomGreetingEmptyString(t *testing.T) {
-	greeting, err := RandomGreeting("")
+	_, err := RandomGreeting("")
 
-	if greeting != "" || err == nil {
-		t.Error("an empty name should return an error")
+	if !errors.Is(err, ErrEmptyNameArgument) {
+		t.Error("an empty string should return an ErrEmptyNameArgument")
 	}
 }
 
@@ -50,17 +51,17 @@ func TestRandomGreetings(t *testing.T) {
 }
 
 func TestRandomGreetingsEmptyArray(t *testing.T) {
-	greetings, err := RandomGreetings()
+	_, err := RandomGreetings()
 
-	if !reflect.DeepEqual(greetings, []string{}) || err == nil {
-		t.Error("an error should be returned when no names are entered")
+	if !errors.Is(err, ErrEmptyNamesArgument) {
+		t.Error("no names entered should return an ErrEmptyNamesArgument")
 	}
 }
 
 func TestRandomGreetingsEmptyString(t *testing.T) {
-	greetings, err := RandomGreetings("")
+	_, err := RandomGreetings("")
 
-	if !reflect.DeepEqual(greetings, []string{}) || err == nil {
-		t.Error("an empty name should return an error")
+	if !errors.Is(err, ErrEmptyNameArgument) {
+		t.Error("one of the names being an empty string should return an ErrEmptyNameArgument")
 	}
 }

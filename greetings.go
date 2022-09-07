@@ -11,9 +11,14 @@ func init() {
 	rand.Seed(time.Now().UnixNano())
 }
 
+var (
+	ErrEmptyNameArgument  = errors.New("expected a non-empty string")
+	ErrEmptyNamesArgument = errors.New("expected at least one name")
+)
+
 func RandomGreeting(name string) (string, error) {
 	if name == "" {
-		return "", errors.New("expected a non-empty string")
+		return "", ErrEmptyNameArgument
 	}
 
 	greetings := [3]string{
@@ -29,7 +34,7 @@ func RandomGreeting(name string) (string, error) {
 
 func RandomGreetings(names ...string) ([]string, error) {
 	if len(names) == 0 {
-		return []string{}, errors.New("expected at least one name")
+		return []string{}, ErrEmptyNamesArgument
 	}
 
 	var greetings []string
